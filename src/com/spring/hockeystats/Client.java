@@ -10,5 +10,11 @@ public class Client {
     private int roomNumber;
     private String roomType;
 
+    public String getName() {
+        return name;
+    }
 
+    public int getCurrentBill() {
+        return currentBill;
+    }
 }
