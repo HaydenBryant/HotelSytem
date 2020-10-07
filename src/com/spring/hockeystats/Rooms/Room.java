@@ -5,16 +5,26 @@ import com.spring.hockeystats.Client;
 public class Room implements RoomInterface{
 
     static private int number;
-    static private String type;
     static private int floor;
+    static private String type;
     static private Boolean isOccupied;
     static private Boolean needsCleaning;
     static private Client occupant;
+    static private int occupants;
     static private int averagePrice;
     static private int beds;
     static private int rooms;
 
-
+    public Room(int number, int floor, String type, int averagePrice, int beds, int rooms){
+        this.number = number;
+        this.floor = floor;
+        this.type = type;
+        this.averagePrice = averagePrice;
+        this.beds = beds;
+        this.rooms = rooms;
+        this.isOccupied = false;
+        this.needsCleaning = false;
+    }
 
     public Boolean reserve(Room room, Client client){
         if (room.isOccupied == true || room.needsCleaning == true){
