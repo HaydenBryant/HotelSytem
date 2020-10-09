@@ -26,12 +26,13 @@ public class Room implements RoomInterface{
         this.needsCleaning = false;
     }
 
-    public Boolean reserve(Room room, Client client){
-        if (room.isOccupied == true || room.needsCleaning == true){
+    public Boolean reserve(Room room, Client client, int occupants){
+        if (room.isOccupied || room.needsCleaning){
             System.out.println("Room " + room.getNumber(room) + " is unavailable.");
             return false;
         }
 
+        room.occupants = occupants;
         room.isOccupied = true;
         room.occupant = client;
         return true;
@@ -53,4 +54,7 @@ public class Room implements RoomInterface{
         return room.number;
     }
 
+    public static int getBeds(Room room) {
+        return room.beds;
+    }
 }
