@@ -38,12 +38,16 @@ public class Room implements RoomInterface{
         return true;
     }
 
-    public void checkout(Room room, Client client){
+    public Boolean checkout(Room room){
+        if(room.isOccupied == false){
+            return false;
+        }
         room.occupant = null;
         room.isOccupied = false;
         room.needsCleaning = true;
 
-        System.out.println(client.getName() + " has an outstanding balance of " + (client.getCurrentBill() - client.getPrepaid()) + "left to pay.");
+        System.out.println(room.occupant.getName() + " has an outstanding balance of " + (room.occupant.getCurrentBill() - room.occupant.getPrepaid()) + "left to pay.");
+        return true;
     }
 
     public void clean(Room room){
@@ -56,5 +60,9 @@ public class Room implements RoomInterface{
 
     public static int getBeds(Room room) {
         return room.beds;
+    }
+
+    public static String getType() {
+        return type;
     }
 }

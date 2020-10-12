@@ -29,4 +29,8 @@ public class Client {
     public void makePayment(Client client, int payment){
         client.prepaid = client.getPrepaid() + payment;
     }
+
+    public void chargeRoom(Client client, int charge){
+        client.currentBill = client.getCurrentBill() + charge;
+    }
 }

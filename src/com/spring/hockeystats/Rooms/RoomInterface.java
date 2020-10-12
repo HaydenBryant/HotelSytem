@@ -4,7 +4,7 @@ import com.spring.hockeystats.Client.Client;
 
 public interface RoomInterface {
     public Boolean reserve(Room room, Client client, int occupants);
-    public void checkout(Room room, Client client);
+    public Boolean checkout(Room room);
     public void clean(Room room);
     public int getNumber(Room room);
 }
