@@ -1,19 +1,19 @@
 package com.spring.hockeystats.Rooms;
 
-import com.spring.hockeystats.Client;
+import com.spring.hockeystats.Client.Client;
 
 public class Room implements RoomInterface{
 
-    static private int number;
-    static private int floor;
-    static private String type;
-    static private Boolean isOccupied;
-    static private Boolean needsCleaning;
-    static private Client occupant;
-    static private int occupants;
-    static private int averagePrice;
-    static private int beds;
-    static private int rooms;
+    static protected int number;
+    static protected int floor;
+    static protected String type;
+    static protected Boolean isOccupied;
+    static protected Boolean needsCleaning;
+    static protected Client occupant;
+    static protected int occupants;
+    static protected int averagePrice;
+    static protected int beds;
+    static protected int rooms;
 
     public Room(int number, int floor, String type, int averagePrice, int beds, int rooms){
         this.number = number;
@@ -43,7 +43,7 @@ public class Room implements RoomInterface{
         room.isOccupied = false;
         room.needsCleaning = true;
 
-        System.out.println(client.getName() + " has an outstanding balance of " + client.getCurrentBill() + "left to pay.");
+        System.out.println(client.getName() + " has an outstanding balance of " + (client.getCurrentBill() - client.getPrepaid()) + "left to pay.");
     }
 
     public void clean(Room room){

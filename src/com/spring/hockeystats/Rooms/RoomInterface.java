@@ -1,6 +1,6 @@
 package com.spring.hockeystats.Rooms;
 
-import com.spring.hockeystats.Client;
+import com.spring.hockeystats.Client.Client;
 
 public interface RoomInterface {
     public Boolean reserve(Room room, Client client, int occupants);

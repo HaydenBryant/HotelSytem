@@ -1,15 +1,13 @@
 package com.spring.hockeystats.Rooms;
 
-import com.spring.hockeystats.Client;
+import com.spring.hockeystats.Client.Client;
 
 public class StandardRoom extends Room implements RoomInterface {
 
 
-    public StandardRoom(int number, int floor, String type, int averagePrice, int beds, int rooms){
+    public StandardRoom(int number, int floor){
         super(number, floor, "Standard", 100, 2, 1);
     }
-
-//    override reserve = if party size > beds * 2 print unavailable otherwise run standard reserve
 
 
     @Override
@@ -19,7 +17,7 @@ public class StandardRoom extends Room implements RoomInterface {
             return false;
         }
 
-        if (room.isOccupied || room.needsCleaning){
+        if (room.isOccupied || needsCleaning){
             System.out.println("Room " + room.getNumber(room) + " is unavailable.");
             return false;
         }
