@@ -22,9 +22,7 @@ public class Client {
         return prepaid;
     }
 
-    //    makePayment = increase prepaid
-//    chargeRoom = increase current bill
-//            getOustanding = get outstanding balance.
+
 
     public void makePayment(Client client, int payment){
         client.prepaid = client.getPrepaid() + payment;

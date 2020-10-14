@@ -12,7 +12,7 @@ public class StandardRoom extends Room implements RoomInterface {
 
     @Override
     public Boolean reserve(Room room, Client client, int occupants) {
-        if(occupants > room.getBeds(room) * 2){
+        if(occupants > room.getBeds(room) * 2 + 2 * room.getRooms()){
             System.out.println("Unavailable");
             return false;
         }

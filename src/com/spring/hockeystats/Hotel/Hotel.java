@@ -63,8 +63,30 @@ public class Hotel {
         return false;
     }
 
+    public int calculatePrice(Room room, Client client){
+
+        int price = 0;
+        int percentCharge;
+
+        if(room.getOccupants() > room.getBeds(room)) {
+
+            if (room.getType().contains("Suite")) {
+                percentCharge = 8;
+            } else {
+                percentCharge = 5;
+            }
+
+            int clientsToUpcharge = room.getOccupants() - room.getBeds();
+            for(int i = 0; i < room.getOccupants(); i++){
+
+            }
+        }
+
+
+
+    }
+
 //    public Boolean cleanRoom(Room room){
-//
 //        return true;
 //    }
 

@@ -65,4 +65,12 @@ public class Room implements RoomInterface{
     public static String getType() {
         return type;
     }
+
+    public static int getRooms() {
+        return rooms;
+    }
+
+    public static int getOccupants() {
+        return occupants;
+    }
 }
