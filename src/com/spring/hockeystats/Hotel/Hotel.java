@@ -76,14 +76,21 @@ public class Hotel {
                 percentCharge = 5;
             }
 
-            int clientsToUpcharge = room.getOccupants() - room.getBeds();
+            int clientsToUpcharge = room.getOccupants() - room.getBeds(room);
             for(int i = 0; i < room.getOccupants(); i++){
-
+                if(clientsToUpcharge > 0){
+                    price += (room.getAveragePrice() * (percentCharge/100));
+                    clientsToUpcharge--;
+                } else {
+                    price += room.getAveragePrice();
+                }
+            }
+        } else {
+            for(int i = 0; i < room.getOccupants(); i++){
+                price += room.getAveragePrice();
             }
         }
-
-
-
+        return price;
     }
 
 //    public Boolean cleanRoom(Room room){

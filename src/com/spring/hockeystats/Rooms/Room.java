@@ -73,4 +73,8 @@ public class Room implements RoomInterface{
     public static int getOccupants() {
         return occupants;
     }
+
+    public static int getAveragePrice() {
+        return averagePrice;
+    }
 }
