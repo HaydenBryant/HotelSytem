@@ -27,6 +27,12 @@ public class Room implements RoomInterface{
     }
 
     public Boolean reserve(Room room, Client client, int occupants){
+        if(room.isOccupied){
+            System.out.println("Occupied");
+        }
+        if(room.needsCleaning){
+            System.out.println("Needs cleaning");
+        }
         if (room.isOccupied || room.needsCleaning){
             System.out.println("Room " + room.getNumber(room) + " is unavailable.");
             return false;
@@ -46,7 +52,7 @@ public class Room implements RoomInterface{
         room.isOccupied = false;
         room.needsCleaning = true;
 
-        System.out.println(room.occupant.getName() + " has an outstanding balance of " + (room.occupant.getCurrentBill() - room.occupant.getPrepaid()) + "left to pay.");
+        System.out.println(room.getOccupant().getName() + " has an outstanding balance of " + (room.getOccupant().getCurrentBill() - room.getOccupant().getPrepaid()) + "left to pay.");
         return true;
     }
 
@@ -68,6 +74,10 @@ public class Room implements RoomInterface{
 
     public static int getRooms() {
         return rooms;
+    }
+
+    public static Client getOccupant(){
+        return occupant;
     }
 
     public static int getOccupants() {

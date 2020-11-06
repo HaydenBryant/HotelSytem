@@ -10,6 +10,13 @@ public class Client {
     private int roomNumber;
     private String roomType;
 
+    public Client(String name, int partySize, int prepaid, String phoneNumber) {
+        this.name = name;
+        this.partySize = partySize;
+        this.prepaid = prepaid;
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getName() {
         return name;
     }

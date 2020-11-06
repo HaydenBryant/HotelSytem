@@ -5,6 +5,7 @@ import com.spring.hockeystats.Rooms.Room;
 import com.spring.hockeystats.Rooms.StandardRoom;
 import com.spring.hockeystats.Rooms.SuiteRoom;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Hotel {
@@ -19,48 +20,54 @@ public class Hotel {
 
     public Hotel(String name){
         this.name = name;
+        this.availableStandards = new ArrayList<Room>();
+        this.reservedStandards = new ArrayList<Room>();
+        this.availableSuites = new ArrayList<Room>();
+        this.reservedSuites = new ArrayList<Room>();
+        this.clients = new ArrayList<Client>();
     }
 
     public void setRooms(Hotel hotel){
         hotel.rooms = hotel.getAvailableStandards().size() + hotel.getReservedStandards().size() + hotel.getAvailableSuites().size() + hotel.getReservedSuites().size();
     }
 
-    public void addSuite(SuiteRoom room) {
+    public void addRoom(Room room) {
         if (room.getType().contains("Suite")) {
-            availableSuites.add(room);
+            this.availableSuites.add(room);
         } else {
-            availableStandards.add(room);
+            this.availableStandards.add(room);
         }
         this.setRooms(this);
         return;
     }
 
     public Boolean reserveRoom(Client client, Room room, int occupants){
+        room.reserve(room, client, occupants);
         if(room.reserve(room, client, occupants)){
             if (room.getType().contains("Suite")) {
-                availableSuites.remove(room);
-                reservedSuites.add(room);
+                this.availableSuites.remove(room);
+                this.reservedSuites.add(room);
             } else {
-                availableStandards.remove(room);
-                reservedStandards.add(room);
+                this.availableStandards.remove(room);
+                this.reservedStandards.add(room);
             }
             return true;
         }
         return false;
     }
 
-    public Boolean checkoutRoom(Room room){
+    public int checkoutRoom(Room room){
         if(room.checkout(room)){
             if (room.getType().contains("Suite")) {
-                availableSuites.add(room);
-                reservedSuites.remove(room);
+                this.availableSuites.add(room);
+                this.reservedSuites.remove(room);
             } else {
-                availableStandards.add(room);
-                reservedStandards.remove(room);
+                this.availableStandards.add(room);
+                this.reservedStandards.remove(room);
             }
-            return true;
+            return calculatePrice(room, room.getOccupant());
         }
-        return false;
+        return 0;
     }
 
     public int calculatePrice(Room room, Client client){
