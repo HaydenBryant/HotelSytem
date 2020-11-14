@@ -31,11 +31,12 @@ public class Client {
 
 
 
-    public void makePayment(Client client, int payment){
-        client.prepaid = client.getPrepaid() + payment;
+    public void makePayment(int payment){
+        this.prepaid = this.getPrepaid() + payment;
     }
 
-    public void chargeRoom(Client client, int charge){
-        client.currentBill = client.getCurrentBill() + charge;
+    public int chargeRoom(int charge){
+        this.currentBill = this.getCurrentBill() + charge;
+        return this.currentBill;
     }
 }

@@ -51,6 +51,7 @@ public class Hotel {
                 this.availableStandards.remove(room);
                 this.reservedStandards.add(room);
             }
+            client.chargeRoom(calculatePrice(room, client));
             return true;
         }
         return false;
@@ -68,7 +69,7 @@ public class Hotel {
             }
             return calculatePrice(room, room.getOccupant());
         }
-        return 0;
+        return -1;
     }
 
     public int calculatePrice(Room room, Client client){

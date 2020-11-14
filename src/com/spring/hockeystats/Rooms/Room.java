@@ -49,7 +49,7 @@ public class Room implements RoomInterface{
         if(this.isOccupied == false){
             return false;
         }
-        System.out.println(this.getOccupant().getName() + " has an outstanding balance of " + (this.getOccupant().getCurrentBill() - this.getOccupant().getPrepaid()) + "left to pay.");
+        System.out.println(this.getOccupant().getName() + " has an outstanding balance of " + (this.getOccupant().getCurrentBill() - this.getOccupant().getPrepaid()) + " left to pay.");
 
         this.occupant = null;
         this.isOccupied = false;

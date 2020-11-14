@@ -16,7 +16,7 @@ public class Main {
         Client client = new Client("Hannah", 2, 50, "5555555555");
 
         hotel.reserveRoom(client, standRoom, 2);
-        System.out.println(hotel.checkoutRoom(standRoom));
+        client.chargeRoom(hotel.checkoutRoom(standRoom));
 
     }
 }
