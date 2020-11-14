@@ -24,6 +24,7 @@ public class Room implements RoomInterface{
         this.rooms = rooms;
         this.isOccupied = false;
         this.needsCleaning = false;
+        System.out.println("Room is made and is a room and is occupied " + this.isOccupied);
     }
 
     public Boolean reserve(Client client, int occupants){

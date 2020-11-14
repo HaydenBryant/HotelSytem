@@ -13,11 +13,8 @@ public class Main {
         StandardRoom standRoom = new StandardRoom(101, 1);
         hotel.addRoom(standRoom);
 
-        for(Room room : hotel.getAvailableStandards()){
-            System.out.println(room.isRoomOccupied());
-        }
-
         Client client = new Client("Hannah", 2, 50, "5555555555");
+
         hotel.reserveRoom(client, standRoom, 2);
         System.out.println(hotel.checkoutRoom(standRoom));
     }
