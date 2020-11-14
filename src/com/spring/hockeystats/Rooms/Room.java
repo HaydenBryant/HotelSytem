@@ -45,15 +45,16 @@ public class Room implements RoomInterface{
         return true;
     }
 
-    public Boolean checkout(Room room){
-        if(room.isOccupied == false){
+    public Boolean checkout(){
+        if(this.isOccupied == false){
             return false;
         }
-        room.occupant = null;
-        room.isOccupied = false;
-        room.needsCleaning = true;
+        System.out.println(this.getOccupant().getName() + " has an outstanding balance of " + (this.getOccupant().getCurrentBill() - this.getOccupant().getPrepaid()) + "left to pay.");
 
-        System.out.println(room.getOccupant().getName() + " has an outstanding balance of " + (room.getOccupant().getCurrentBill() - room.getOccupant().getPrepaid()) + "left to pay.");
+        this.occupant = null;
+        this.isOccupied = false;
+        this.needsCleaning = true;
+
         return true;
     }
 

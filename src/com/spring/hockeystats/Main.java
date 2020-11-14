@@ -17,5 +17,6 @@ public class Main {
 
         hotel.reserveRoom(client, standRoom, 2);
         System.out.println(hotel.checkoutRoom(standRoom));
+
     }
 }

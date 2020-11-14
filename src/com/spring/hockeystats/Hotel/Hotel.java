@@ -43,7 +43,7 @@ public class Hotel {
 
     public Boolean reserveRoom(Client client, Room room, int occupants){
         room.reserve(client, occupants);
-        if(room.reserve(client, occupants)){
+        if(room.isRoomOccupied()){
             if (room.getType().contains("Suite")) {
                 this.availableSuites.remove(room);
                 this.reservedSuites.add(room);
@@ -57,7 +57,8 @@ public class Hotel {
     }
 
     public int checkoutRoom(Room room){
-        if(room.checkout(room)){
+        if(room.isRoomOccupied()){
+            room.checkout();
             if (room.getType().contains("Suite")) {
                 this.availableSuites.add(room);
                 this.reservedSuites.remove(room);
