@@ -42,8 +42,8 @@ public class Hotel {
     }
 
     public Boolean reserveRoom(Client client, Room room, int occupants){
-        room.reserve(room, client, occupants);
-        if(room.reserve(room, client, occupants)){
+        room.reserve(client, occupants);
+        if(room.reserve(client, occupants)){
             if (room.getType().contains("Suite")) {
                 this.availableSuites.remove(room);
                 this.reservedSuites.add(room);
@@ -75,7 +75,7 @@ public class Hotel {
         int price = 0;
         int percentCharge;
 
-        if(room.getOccupants() > room.getBeds(room)) {
+        if(room.getOccupants() > room.getBeds()) {
 
             if (room.getType().contains("Suite")) {
                 percentCharge = 8;
@@ -83,7 +83,7 @@ public class Hotel {
                 percentCharge = 5;
             }
 
-            int clientsToUpcharge = room.getOccupants() - room.getBeds(room);
+            int clientsToUpcharge = room.getOccupants() - room.getBeds();
             for(int i = 0; i < room.getOccupants(); i++){
                 if(clientsToUpcharge > 0){
                     price += (room.getAveragePrice() * (percentCharge/100));

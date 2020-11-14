@@ -26,21 +26,21 @@ public class Room implements RoomInterface{
         this.needsCleaning = false;
     }
 
-    public Boolean reserve(Room room, Client client, int occupants){
-        if(room.isOccupied){
+    public Boolean reserve(Client client, int occupants){
+        if(this.isOccupied){
             System.out.println("Occupied");
         }
-        if(room.needsCleaning){
+        if(this.needsCleaning){
             System.out.println("Needs cleaning");
         }
-        if (room.isOccupied || room.needsCleaning){
-            System.out.println("Room " + room.getNumber(room) + " is unavailable.");
+        if (this.isOccupied || this.needsCleaning){
+            System.out.println("Room " + this.getNumber() + " is unavailable.");
             return false;
         }
 
-        room.occupants = occupants;
-        room.isOccupied = true;
-        room.occupant = client;
+        this.occupants = occupants;
+        this.isOccupied = true;
+        this.occupant = client;
         return true;
     }
 
@@ -60,12 +60,12 @@ public class Room implements RoomInterface{
         room.needsCleaning = false;
     }
 
-    public int getNumber(Room room) {
-        return room.number;
+    public int getNumber() {
+        return number;
     }
 
-    public static int getBeds(Room room) {
-        return room.beds;
+    public static int getBeds() {
+        return beds;
     }
 
     public static String getType() {
@@ -87,4 +87,8 @@ public class Room implements RoomInterface{
     public static int getAveragePrice() {
         return averagePrice;
     }
+
+    public static Boolean isRoomOccupied(){ return isOccupied; }
+
+    public static Boolean isRoomDirty() { return needsCleaning; }
 }

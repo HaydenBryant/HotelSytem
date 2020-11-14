@@ -7,24 +7,31 @@ public class StandardRoom extends Room implements RoomInterface {
 
     public StandardRoom(int number, int floor){
         super(number, floor, "Standard", 100, 2, 1);
+        this.isOccupied = false;
+        this.needsCleaning = false;
     }
 
 
     @Override
-    public Boolean reserve(Room room, Client client, int occupants) {
-        if(occupants > room.getBeds(room) * 2 + 2 * room.getRooms()){
+    public Boolean reserve(Client client, int occupants) {
+        if(occupants > this.getBeds() * 2 + 2 * this.getRooms()){
             System.out.println("Unavailable");
             return false;
         }
 
-        if (room.isOccupied || needsCleaning){
-            System.out.println("Room " + room.getNumber(room) + " is unavailable.");
+        if(this.isRoomOccupied()){
+            System.out.println("room occ");
+        }
+
+
+        if (this.isRoomOccupied() || this.isRoomDirty()){
+            System.out.println("Room " + this.getNumber() + " is unavailable.");
             return false;
         }
 
-        room.occupants = occupants;
-        room.isOccupied = true;
-        room.occupant = client;
+        this.occupants = occupants;
+        this.isOccupied = true;
+        this.occupant = client;
         return true;
     }
 }

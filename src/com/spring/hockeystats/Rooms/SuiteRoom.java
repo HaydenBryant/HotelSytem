@@ -14,16 +14,16 @@ public class SuiteRoom extends Room implements RoomInterface {
     }
 
     @Override
-    public Boolean reserve(Room room, Client client, int occupants) {
+    public Boolean reserve(Client client, int occupants) {
 
-        if (room.isOccupied || needsCleaning || needsRestock){
-            System.out.println("Room " + room.getNumber(room) + " is unavailable.");
+        if (this.isOccupied || this.needsCleaning || this.needsRestock){
+            System.out.println("Room " + this.getNumber() + " is unavailable.");
             return false;
         }
 
-        room.occupants = occupants;
-        room.isOccupied = true;
-        room.occupant = client;
+        this.occupants = occupants;
+        this.isOccupied = true;
+        this.occupant = client;
         return true;
     }
 
