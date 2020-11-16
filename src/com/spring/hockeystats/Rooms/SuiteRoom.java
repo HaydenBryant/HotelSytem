@@ -9,6 +9,8 @@ public class SuiteRoom extends Room implements RoomInterface {
 
     public SuiteRoom(int number, int floor, Boolean kitchenette){
         super(number, floor, "Suite", 300, 3, 3);
+        this.isOccupied = false;
+        this.needsCleaning = false;
         this.kitchenette = kitchenette;
         this.needsRestock = false;
     }
@@ -28,16 +30,16 @@ public class SuiteRoom extends Room implements RoomInterface {
     }
 
 //    @Override
-    public void checkout(SuiteRoom room, Client client) {
-        room.occupant = null;
-        room.isOccupied = false;
-        room.needsCleaning = true;
-        room.needsRestock = true;
+    public void checkout(Client client) {
+        this.occupant = null;
+        this.isOccupied = false;
+        this.needsCleaning = true;
+        this.needsRestock = true;
 
         System.out.println(client.getName() + " has an outstanding balance of " + (client.getCurrentBill() - client.getPrepaid())  + "left to pay.");
     }
 
-    public void restock(SuiteRoom room){
-        room.needsRestock = false;
+    public void restock(){
+        this.needsRestock = false;
     }
 }

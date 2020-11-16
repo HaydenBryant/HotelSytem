@@ -24,16 +24,10 @@ public class Room implements RoomInterface{
         this.rooms = rooms;
         this.isOccupied = false;
         this.needsCleaning = false;
-        System.out.println("Room is made and is a room and is occupied " + this.isOccupied);
     }
 
     public Boolean reserve(Client client, int occupants){
-        if(this.isOccupied){
-            System.out.println("Occupied");
-        }
-        if(this.needsCleaning){
-            System.out.println("Needs cleaning");
-        }
+
         if (this.isOccupied || this.needsCleaning){
             System.out.println("Room " + this.getNumber() + " is unavailable.");
             return false;

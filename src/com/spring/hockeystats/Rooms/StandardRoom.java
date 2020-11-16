@@ -9,7 +9,6 @@ public class StandardRoom extends Room implements RoomInterface {
         super(number, floor, "Standard", 100, 2, 1);
         this.isOccupied = false;
         this.needsCleaning = false;
-        System.out.println("Room is made and is a Standard room and is occupied " + this.isOccupied);
     }
 
 
